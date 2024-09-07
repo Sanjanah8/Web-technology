@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<team>
+    <player>
+        <name>Lionel Messi</name>
+        <position>Forward</position>
+        <number>10</number>
+        <nationality>Argentina</nationality>
+    </player>
+    <player>
+        <name>Cristiano Ronaldo</name>
+        <position>Forward</position>
+        <number>7</number>
+        <nationality>Portugal</nationality>
+    </player>
+    <player>
+        <name>Neymar Jr.</name>
+        <position>Forward</position>
+        <number>10</number>
+        <nationality>Brazil</nationality>
+    </player>
+</team>
