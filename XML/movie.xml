@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<movies>
+    <movie>
+        <title>Inception</title>
+        <director>Christopher Nolan</director>
+        <genre>Sci-Fi</genre>
+        <year>2010</year>
+    </movie>
+    <movie>
+        <title>The Matrix</title>
+        <director>The Wachowskis</director>
+        <genre>Sci-Fi</genre>
+        <year>1999</year>
+    </movie>
+    <movie>
+        <title>Parasite</title>
+        <director>Bong Joon-ho</director>
+        <genre>Thriller</genre>
+        <year>2019</year>
+    </movie>
+</movies>
