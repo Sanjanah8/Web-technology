@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+    <book>
+        <title>Learning XML</title>
+        <author>The Hunger games</author>
+        <price>39.95</price>
+        <year>2003</year>
+    </book>
+    <book>
+        <title>Harry Potter</title>
+        <author>J.K. Rowling</author>
+        <price>29.99</price>
+        <year>2007</year>
+    </book>
+    <book>
+        <title>The Hobbit</title>
+        <author>J.R.R. Tolkien</author>
+        <price>19.99</price>
+        <year>1937</year>
+    </book>
+</bookstore>
