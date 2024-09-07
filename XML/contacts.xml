@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contacts>
+    <contact>
+        <name>sanju</name>
+        <phone>555-1234</phone>
+        <email>sanju@gmail.com</email>
+    </contact>
+    <contact>
+        <name>Jane Smith</name>
+        <phone>555-5678</phone>
+        <email>shriya@gmail.com</email>
+    </contact>
+    <contact>
+        <name>olivia</name>
+        <phone>555-9876</phone>
+        <email>olivia@gmail.com</email>
+    </contact>
+</contacts>
