@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <product>
+        <name>iPhone 14</name>
+        <category>Electronics</category>
+        <price>999.99</price>
+        <availability>In Stock</availability>
+    </product>
+    <product>
+        <name>Nike Running Shoes</name>
+        <category>Sportswear</category>
+        <price>89.99</price>
+        <availability>Out of Stock</availability>
+    </product>
+    <product>
+        <name>Echo Dot</name>
+        <category>Smart Home</category>
+        <price>49.99</price>
+        <availability>In Stock</availability>
+    </product>
+</catalog>
