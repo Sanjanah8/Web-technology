@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist>
+    <song>
+        <title>Shape of You</title>
+        <artist>Ed Sheeran</artist>
+        <album>Divide</album>
+        <duration>4:24</duration>
+    </song>
+    <song>
+        <title>Blinding Lights</title>
+        <artist>The Weeknd</artist>
+        <album>After Hours</album>
+        <duration>3:22</duration>
+    </song>
+    <song>
+        <title>Uptown Funk</title>
+        <artist>Mark Ronson</artist>
+        <album>Uptown Special</album>
+        <duration>4:31</duration>
+    </song>
+</playlist>
