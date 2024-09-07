@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class>
+    <student>
+        <name>Alice Johnson</name>
+        <age>10</age>
+        <grade>5</grade>
+    </student>
+    <student>
+        <name>David Kim</name>
+        <age>11</age>
+        <grade>6</grade>
+    </student>
+    <student>
+        <name>Emily Chen</name>
+        <age>10</age>
+        <grade>5</grade>
+    </student>
+</class>
