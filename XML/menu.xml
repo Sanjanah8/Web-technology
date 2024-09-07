@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+    <dish>
+        <name>Spaghetti Carbonara</name>
+        <price>12.50</price>
+        <description>Pasta with pancetta, eggs, and Parmesan</description>
+    </dish>
+    <dish>
+        <name>Margherita Pizza</name>
+        <price>9.00</price>
+        <description>Classic pizza with tomato, mozzarella, and basil</description>
+    </dish>
+    <dish>
+        <name>Caesar Salad</name>
+        <price>8.50</price>
+        <description>Romaine lettuce, croutons, and Caesar dressing</description>
+    </dish>
+</menu>
