@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itinerary>
+    <destination>
+        <location>Paris, France</location>
+        <date>2024-09-15</date>
+        <activities>
+            <activity>Eiffel Tower Visit</activity>
+            <activity>Seine River Cruise</activity>
+        </activities>
+    </destination>
+    <destination>
+        <location>Rome, Italy</location>
+        <date>2024-09-18</date>
+        <activities>
+            <activity>Colosseum Tour</activity>
+            <activity>Vatican Museums</activity>
+        </activities>
+    </destination>
+</itinerary>
