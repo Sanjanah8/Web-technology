@@ -1,0 +1,122 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Frame-based Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1, h2 {
+            margin: 0;
+            padding: 10px;
+        }
+        #header {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        #nav {
+            background-color: #e6e6e6;
+            padding: 10px;
+        }
+        #nav a {
+            display: block;
+            padding: 8px;
+            text-decoration: none;
+            color: #000;
+            background-color: #f2f2f2;
+            margin-bottom: 5px;
+        }
+        #nav a:hover {
+            background-color: #ccc;
+        }
+        #main {
+            padding: 20px;
+        }
+        #footer {
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<frameset rows="80px,* 40px" frameborder="1" border="1">
+    <frame srcdoc="
+        <!DOCTYPE html>
+        <html lang='en'>
+        <head>
+            <meta charset='UTF-8'>
+            <title>Header</title>
+            <style>
+                body { margin: 0; padding: 0; text-align: center; background-color: #f2f2f2; }
+                h1 { margin: 0; padding: 20px; }
+            </style>
+        </head>
+        <body>
+            <h1>My Website</h1>
+        </body>
+        </html>
+    " name="header" noresize>
+    <frameset cols="200px,*">
+        <frame srcdoc="
+            <!DOCTYPE html>
+            <html lang='en'>
+            <head>
+                <meta charset='UTF-8'>
+                <title>Navigation</title>
+                <style>
+                    body { margin: 0; padding: 10px; background-color: #e6e6e6; }
+                    a { display: block; padding: 8px; text-decoration: none; color: #000; background-color: #f2f2f2; margin-bottom: 5px; }
+                    a:hover { background-color: #ccc; }
+                </style>
+            </head>
+            <body>
+                <a href='#home' onclick='parent.main.location.href=\"main.html\"'>Home</a>
+                <a href='#about' onclick='parent.main.location.href=\"about.html\"'>About</a>
+                <a href='#contact' onclick='parent.main.location.href=\"contact.html\"'>Contact</a>
+            </body>
+            </html>
+        " name="nav" noresize>
+        <frame srcdoc="
+            <!DOCTYPE html>
+            <html lang='en'>
+            <head>
+                <meta charset='UTF-8'>
+                <title>Main Content</title>
+                <style>
+                    body { margin: 20px; }
+                </style>
+            </head>
+            <body>
+                <h2>Welcome to My Website</h2>
+                <p>This is the main content area. Here you can put some introductory text or images about your website.</p>
+            </body>
+            </html>
+        " name="main">
+    </frameset>
+    <frame srcdoc="
+        <!DOCTYPE html>
+        <html lang='en'>
+        <head>
+            <meta charset='UTF-8'>
+            <title>Footer</title>
+            <style>
+                body { margin: 0; padding: 0; text-align: center; background-color: #f2f2f2; }
+                p { margin: 0; padding: 10px; }
+            </style>
+        </head>
+        <body>
+            <p>&copy; 2024 My Website. All rights reserved.</p>
+        </body>
+        </html>
+    " name="footer" noresize>
+</frameset>
+<noframes>
+    <body>
+        <p>This page requires a browser that supports frames.</p>
+    </body>
+</noframes>
+</html>
+

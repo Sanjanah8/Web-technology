@@ -1,0 +1,143 @@
+<!-- Registration Page HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color:black;
+            margin: 0;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="date"], select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type="file"] {
+            margin-bottom: 15px;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: red;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <form id="registrationForm" onsubmit="return validateRegistrationForm()">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" maxlength="50" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <br>
+        <label for="profilePic">Profile Picture:</label>
+        <input type="file" id="profilePic" name="profilePic" accept="image/*" required>
+        <br>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+        <br>
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+            <option value="">Select your country</option>
+            <option value="us">United States</option>
+            <option value="ca">Canada</option>
+            <option value="uk">United Kingdom</option>
+            <!-- Add more countries as needed -->
+        </select>
+        <br>
+        <input type="submit" value="Register">
+    </form>
+    <script src="registration-validation.js" defer></script>
+</body>
+<script>// registration-validation.js
+
+    function validateRegistrationForm() {
+        const fullName = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const gender = document.querySelector('input[name="gender"]:checked');
+        const profilePic = document.getElementById('profilePic').files[0];
+        const dob = document.getElementById('dob').value;
+        const country = document.getElementById('country').value;
+    
+        // Full Name Validation
+        if (fullName === '') {
+            alert('Full Name cannot be empty.');
+            return false;
+        }
+    
+        // Email Validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Please enter a valid email address.');
+            return false;
+        }
+    
+        // Gender Validation
+        if (!gender) {
+            alert('Please select your gender.');
+            return false;
+        }
+    
+        // Profile Picture Validation
+        if (!profilePic) {
+            alert('Please upload a profile picture.');
+            return false;
+        }
+    
+        // Date of Birth Validation
+        if (dob === '') {
+            alert('Please select your date of birth.');
+            return false;
+        }
+    
+        // Country Validation
+        if (country === '') {
+            alert('Please select your country.');
+            return false;
+        }
+    
+        // If everything is valid
+        return true;
+    }
+    </script>
+</html>

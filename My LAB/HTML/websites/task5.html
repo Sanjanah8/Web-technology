@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .timer-container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+        .timer {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #5cb85c;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .stop-button {
+            background-color: #d9534f;
+        }
+        .stop-button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer-container">
+        <div id="timer" class="timer">00:00:00</div>
+        <button id="startBtn">Start</button>
+        <button id="resumeBtn" style="display:none;">Resume</button>
+        <button id="pauseBtn" style="display:none;">Pause</button>
+        <button id="stopBtn" class="stop-button">Stop</button>
+    </div>
+
+    <script>
+        let countdown;
+        let timeLeft = 3600; // Initial time in seconds (1 hour)
+        let isPaused = false;
+
+        function updateDisplay() {
+            const hours = String(Math.floor(timeLeft / 3600)).padStart(2, '0');
+            const minutes = String(Math.floor((timeLeft % 3600) / 60)).padStart(2, '0');
+            const seconds = String(timeLeft % 60).padStart(2, '0');
+            document.getElementById('timer').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        function startTimer() {
+            if (countdown) clearInterval(countdown);
+            countdown = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    alert('Time\'s up!');
+                } else {
+                    timeLeft--;
+                    updateDisplay();
+                }
+            }, 1000);
+        }
+
+        function handleStart() {
+            if (!isPaused) {
+                timeLeft = 3600; // Reset time to 1 hour
+            }
+            startTimer();
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('resumeBtn').style.display = 'none';
+            document.getElementById('pauseBtn').style.display = 'inline-block';
+        }
+
+        function handleResume() {
+            startTimer();
+            document.getElementById('resumeBtn').style.display = 'none';
+            document.getElementById('pauseBtn').style.display = 'inline-block';
+        }
+
+        function handlePause() {
+            clearInterval(countdown);
+            document.getElementById('pauseBtn').style.display = 'none';
+            document.getElementById('resumeBtn').style.display = 'inline-block';
+            isPaused = true;
+        }
+
+        function handleStop() {
+            clearInterval(countdown);
+            timeLeft = 3600; // Reset time
+            updateDisplay();
+            document.getElementById('startBtn').style.display = 'inline-block';
+            document.getElementById('resumeBtn').style.display = 'none';
+            document.getElementById('pauseBtn').style.display = 'none';
+            isPaused = false;
+        }
+
+        document.getElementById('startBtn').onclick = handleStart;
+        document.getElementById('resumeBtn').onclick = handleResume;
+        document.getElementById('pauseBtn').onclick = handlePause;
+        document.getElementById('stopBtn').onclick = handleStop;
+
+        // Initialize display
+        updateDisplay();
+    </script>
+</body>
+</html>
