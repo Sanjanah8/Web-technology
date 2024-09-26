@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE document SYSTEM "extern.dtd">
+<document>
+<customer>
+<name>
+<firstname>aaa</firstname>
+<lastname>bbb</lastname>
+</name>
+<date>1 jan 2021</date>
+<orders>
+<item>
+<product>chocolates</product>
+<number>666</number>
+<price>250</price>
+</item>
+
+
+ 
+ 
+
+ 
+<item>
+ 
+
+<product>sweets</product>
+<number>777</number>
+<price>450</price>
+ 
+</item>
+</orders>
+</customer>
+</document>
+ 
+ 
+
+</CUSTOMER>
+</DOCUMENT>
