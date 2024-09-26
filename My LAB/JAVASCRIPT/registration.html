@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <script>
+        function validateRegistrationForm() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var file = document.getElementById("file").files[0];
+            var dob = document.getElementById("dob").value;
+            var country = document.getElementById("country").value;
+            var errorMessage = "";
+
+
+            if (name.length < 2 || name.length > 50) {
+                errorMessage += "Name must be between 2 and 50 characters.\n";
+            }
+
+                        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                errorMessage += "Invalid email address.\n";
+            }
+
+
+            if (password.length < 6) {
+                errorMessage += "Password must be at least 6 characters long.\n";
+            }
+
+
+            if (password !== confirmPassword) {
+                errorMessage += "Passwords do not match.\n";
+            }
+
+
+            if (!gender) {
+                errorMessage += "Please select a gender.\n";
+            }
+            if (!file) {
+                errorMessage += "Please upload a file.\n";
+            }
+
+         
+            if (!dob) {
+                errorMessage += "Date of birth is required.\n";
+            }
+
+
+            if (country === "") {
+                errorMessage += "Please select a country.\n";
+            }
+
+            if (errorMessage !== "") {
+                alert(errorMessage);
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateRegistrationForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password"><br><br>
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br><br>
+        <label for="file">Upload File:</label>
+        <input type="file" id="file" name="file"><br><br>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob"><br><br>
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+            <option value="">Select Country</option>
+            <option value="China">China</option>
+            <option value="Nepal">Nepal</option>
+            <option value="India">India</option>
+        </select><br><br>
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>

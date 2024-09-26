@@ -1,0 +1,61 @@
+<!-- Down counter design (with start, resume, pause, stop button)-->>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Down Counter</title>
+    <script>
+        let timer;
+        let remainingTime;
+        let isPaused = false;
+
+        function startCounter() {
+            const inputTime = parseInt(document.getElementById("timeInput").value);
+            if (isNaN(inputTime) || inputTime <= 0) {
+                alert("Please enter a valid number of seconds.");
+                return;
+            }
+
+            remainingTime = inputTime;
+            updateDisplay(remainingTime);
+
+            timer = setInterval(function () {
+                if (!isPaused) {
+                    remainingTime--;
+                    updateDisplay(remainingTime);
+
+                    if (remainingTime <= 0) {
+                        clearInterval(timer);
+                        alert("Time's up!");
+                    }
+                }
+            }, 1000);
+        }
+
+        function updateDisplay(time) {
+            document.getElementById("display").innerText = time + " seconds remaining";
+        }
+
+        function pauseCounter() {
+            isPaused = true;
+        }
+
+        function resumeCounter() {
+            isPaused = false;
+        }
+
+        function stopCounter() {
+            clearInterval(timer);
+            document.getElementById("display").innerText = "Counter stopped.";
+        }
+    </script>
+</head>
+<body>
+    <h1>Down Counter</h1>
+    <input type="number" id="timeInput" placeholder="Enter time in seconds">
+    <button onclick="startCounter()">Start</button>
+    <button onclick="pauseCounter()">Pause</button>
+    <button onclick="resumeCounter()">Resume</button>
+    <button onclick="stopCounter()">Stop</button>
+    <p id="display"></p>
+</body>
+</html>

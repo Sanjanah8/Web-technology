@@ -1,0 +1,425 @@
+{\rtf1\ansi\ansicpg932\deff0\nouicompat\deflang1033\deflangfe1041{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue0;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\b\f0\fs22\lang9 JAVA SCRIPT EXERCISES:\b0\par
+1.Write a JavaScript to validate the fields of the login page\par
+\b PROGRAM:\b0\par
+
+\pard\sl240\slmult1 <!DOCTYPE html>\par
+<html lang="en">\par
+<head>\par
+    <meta charset="UTF-8">\par
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\par
+    <title>Login Form</title>\par
+    <style>\par
+        body \{\par
+            background-color: #ffc0cb; \par
+            display: flex;\par
+            justify-content: center;\par
+            align-items: center;\par
+            height: 100vh;\par
+            margin: 0;\par
+            font-family: Arial, sans-serif;\par
+        \}\par
+        .form-container \{\par
+            background-color: #fff;\par
+            padding: 20px;\par
+            border-radius: 8px;\par
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\par
+            width: 300px;\par
+        \}\par
+        label \{\par
+            display: block;\par
+            margin-bottom: 8px;\par
+        \}\par
+        input[type="text"], input[type="password"] \{\par
+            width: 100%;\par
+            padding: 10px;\par
+            margin-bottom: 12px;\par
+            border: 1px solid #ddd;\par
+            border-radius: 4px;\par
+        \}\par
+        input[type="submit"] \{\par
+            background-color: #ff69b4; \par
+            color: #fff;\par
+            border: none;\par
+            padding: 10px;\par
+            border-radius: 4px;\par
+            cursor: pointer;\par
+            font-size: 16px;\par
+        \}\par
+        input[type="submit"]:hover \{\par
+            background-color: #ff85c0; \par
+        \}\par
+        .error-message \{\par
+            color: #ff0000;\par
+            margin-top: 10px;\par
+        \}\par
+    </style>\par
+    <script>\par
+        function validateLoginForm() \{\par
+            var username = document.getElementById("username").value;\par
+            var password = document.getElementById("password").value;\par
+            var errorMessage = "";\par
+\par
+            if (username === "") \{\par
+                errorMessage += "Username is required.\\n";\par
+            \}\par
+            if (password === "") \{\par
+                errorMessage += "Password is required.\\n";\par
+            \}\par
+\par
+            if (errorMessage !== "") \{\par
+                document.getElementById("error-message").innerText = errorMessage;\par
+                return false;\par
+            \}\par
+            return true;\par
+        \}\par
+    </script>\par
+</head>\par
+<body>\par
+    <div class="form-container">\par
+        <form onsubmit="return validateLoginForm()">\par
+            <label for="username">Username:</label>\par
+            <input type="text" id="username" name="username">\par
+            <label for="password">Password:</label>\par
+            <input type="password" id="password" name="password">\par
+            <input type="submit" value="Login">\par
+            <div id="error-message" class="error-message"></div>\par
+        </form>\par
+    </div>\par
+</body>\par
+</html>\par
+\par
+ii. Write a JavaScript to validate the fields of the Registration page  (Should contain conditional logic, radio button, file upload, character limits, calendar adding, Drop down menus, etc )\par
+\par
+\b PROGRAM:\par
+\par
+\b0 <!DOCTYPE html>\par
+<html lang="en">\par
+<head>\par
+    <meta charset="UTF-8">\par
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\par
+    <title>Registration Form</title>\par
+    <script>\par
+        function validateRegistrationForm() \{\par
+            var name = document.getElementById("name").value;\par
+            var email = document.getElementById("email").value;\par
+            var password = document.getElementById("password").value;\par
+            var confirmPassword = document.getElementById("confirm-password").value;\par
+            var gender = document.querySelector('input[name="gender"]:checked');\par
+            var file = document.getElementById("file").files[0];\par
+            var dob = document.getElementById("dob").value;\par
+            var country = document.getElementById("country").value;\par
+            var errorMessage = "";\par
+\par
+\par
+            if (name.length < 2 || name.length > 50) \{\par
+                errorMessage += "Name must be between 2 and 50 characters.\\n";\par
+            \}\par
+\par
+                        var emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\par
+            if (!emailPattern.test(email)) \{\par
+                errorMessage += "Invalid email address.\\n";\par
+            \}\par
+\par
+\par
+            if (password.length < 6) \{\par
+                errorMessage += "Password must be at least 6 characters long.\\n";\par
+            \}\par
+\par
+\par
+            if (password !== confirmPassword) \{\par
+                errorMessage += "Passwords do not match.\\n";\par
+            \}\par
+\par
+\par
+            if (!gender) \{\par
+                errorMessage += "Please select a gender.\\n";\par
+            \}\par
+            if (!file) \{\par
+                errorMessage += "Please upload a file.\\n";\par
+            \}\par
+\par
+         \par
+            if (!dob) \{\par
+                errorMessage += "Date of birth is required.\\n";\par
+            \}\par
+\par
+\par
+            if (country === "") \{\par
+                errorMessage += "Please select a country.\\n";\par
+            \}\par
+\par
+            if (errorMessage !== "") \{\par
+                alert(errorMessage);\par
+                return false;\par
+            \}\par
+            return true;\par
+        \}\par
+    </script>\par
+</head>\par
+<body>\par
+    <form onsubmit="return validateRegistrationForm()">\par
+        <label for="name">Name:</label>\par
+        <input type="text" id="name" name="name"><br><br>\par
+        <label for="email">Email:</label>\par
+        <input type="text" id="email" name="email"><br><br>\par
+        <label for="password">Password:</label>\par
+        <input type="password" id="password" name="password"><br><br>\par
+        <label for="confirm-password">Confirm Password:</label>\par
+        <input type="password" id="confirm-password" name="confirm-password"><br><br>\par
+        <label>Gender:</label>\par
+        <input type="radio" id="male" name="gender" value="male">\par
+        <label for="male">Male</label>\par
+        <input type="radio" id="female" name="gender" value="female">\par
+        <label for="female">Female</label><br><br>\par
+        <label for="file">Upload {\cf1{\field{\*\fldinst{HYPERLINK File:</label> }}{\fldrslt{File:</label>\ul0\cf0}}}}\f0\fs22\par
+        <input type="file" id="file" name="file"><br><br>\par
+        <label for="dob">Date of Birth:</label>\par
+        <input type="date" id="dob" name="dob"><br><br>\par
+        <label for="country">Country:</label>\par
+        <select id="country" name="country">\par
+            <option value="">Select Country</option>\par
+            <option value="China">China</option>\par
+            <option value="Nepal">Nepal</option>\par
+            <option value="India">India</option>\par
+        </select><br><br>\par
+        <input type="submit" value="Register">\par
+    </form>\par
+</body>\par
+</html>\par
+\par
+2.simple calculator design\par
+\b\par
+PROGRAM:\par
+\par
+\b0 <!DOCTYPE html>\par
+<html>\par
+<head>\par
+    <title>Simple Calculator</title>\par
+    <script>\par
+        function calculate(operation) \{\par
+            const num1 = parseFloat(document.getElementById("num1").value);\par
+            const num2 = parseFloat(document.getElementById("num2").value);\par
+            let result;\par
+\par
+            switch(operation) \{\par
+                case 'add': result = num1 + num2;   break;\par
+                case 'subtract': result = num1 - num2;  break;\par
+                case 'multiply':  result = num1 * num2;    break;\par
+                case 'divide':\par
+                    if (num2 !== 0) \{  result = num1 / num2; \} \par
+                    else \{ alert("Cannot divide by zero");   return; \}  break;\par
+                default:    result = "Invalid operation"; \}\par
+            document.getElementById("result").value = result;\par
+        \}\par
+    </script>\par
+</head>\par
+<body>\par
+    <h1>Simple Calculator</h1>\par
+    <input type="number" id="num1" placeholder="First Number">\par
+    <input type="number" id="num2" placeholder="Second Number"><br><br>\par
+    <button onclick="calculate('add')">Add</button>\par
+    <button onclick="calculate('subtract')">Subtract</button>\par
+    <button onclick="calculate('multiply')">Multiply</button>\par
+    <button onclick="calculate('divide')">Divide</button><br><br>\par
+    <label for="result">Result:</label>\par
+    <input type="text" id="result" readonly>\par
+</body>\par
+</html>\par
+\par
+3.Create a multi-step form with client-side validation at each step\par
+Requirements:\par
+Divide the form into multiple steps (e.g., Personal Information, Account Details, Confirm Details).\par
+Each step should have its own set of fields:\par
+Step 1: Name, Date of Birth (valid date format)\par
+Step 2: Username, Email, Password\par
+Step 3: Review and Confirm\par
+Implement validation for each step:\par
+Allow navigation to the next step only if the current step's fields are valid.\par
+Provide a "Back" button to return to previous steps.\par
+Ensure the form is only submitted after all steps are completed and validated.\par
+\par
+\b PROGRAM:\b0\par
+\par
+\par
+<!DOCTYPE html>\par
+<html>\par
+<head>\par
+    <title>Multi-Step Form</title>\par
+    <style>\par
+        .step \{\par
+            display: none;\par
+        \}\par
+    </style>\par
+    <script>\par
+        let currentStep = 0;\par
+\par
+        function showStep(step) \{\par
+            document.querySelectorAll('.step')[currentStep].style.display = 'none';\par
+            currentStep = step;\par
+            document.querySelectorAll('.step')[currentStep].style.display = 'block';\par
+        \}\par
+\par
+        function validateStep1() \{\par
+            const name = document.getElementById("name").value;\par
+            const dob = document.getElementById("dob").value;\par
+\par
+            if (name === "") \{\par
+                alert("Name is required");\par
+                return false;\par
+            \}\par
+            if (dob === "") \{\par
+                alert("Date of Birth is required");\par
+                return false;\par
+            \}\par
+\par
+            return true;\par
+        \}\par
+\par
+        function validateStep2() \{\par
+            const username = document.getElementById("username").value;\par
+            const email = document.getElementById("email").value;\par
+            const password = document.getElementById("password").value;\par
+\par
+            if (username === "") \{\par
+                alert("Username is required");\par
+                return false;\par
+            \}\par
+            if (email === "" || !email.includes("@")) \{\par
+                alert("A valid email is required");\par
+                return false;\par
+            \}\par
+            if (password.length < 6) \{\par
+                alert("Password must be at least 6 characters long");\par
+                return false;\par
+            \}\par
+\par
+            return true;\par
+        \}\par
+\par
+        function nextStep() \{\par
+            if (currentStep === 0 && !validateStep1()) return;\par
+            if (currentStep === 1 && !validateStep2()) return;\par
+            showStep(currentStep + 1);\par
+        \}\par
+\par
+        function prevStep() \{\par
+            showStep(currentStep - 1);\par
+        \}\par
+\par
+        function submitForm() \{\par
+            alert("Form submitted successfully!");\par
+        \}\par
+\par
+        window.onload = function() \{\par
+            showStep(0);\par
+        \};\par
+    </script>\par
+</head>\par
+<body>\par
+    <form onsubmit="submitForm(); return false;">\par
+        <div class="step">\par
+            <h2>Step 1: Personal Information</h2>\par
+            <label for="name">Name:</label>\par
+            <input type="text" id="name"><br><br>\par
+\par
+            <label for="dob">Date of Birth:</label>\par
+            <input type="date" id="dob"><br><br>\par
+\par
+            <button type="button" onclick="nextStep()">Next</button>\par
+        </div>\par
+\par
+        <div class="step">\par
+            <h2>Step 2: Account Details</h2>\par
+            <label for="username">Username:</label>\par
+            <input type="text" id="username"><br><br>\par
+\par
+            <label for="email">Email:</label>\par
+            <input type="email" id="email"><br><br>\par
+\par
+            <label for="password">Password:</label>\par
+            <input type="password" id="password"><br><br>\par
+\par
+            <button type="button" onclick="prevStep()">Back</button>\par
+            <button type="button" onclick="nextStep()">Next</button>\par
+        </div>\par
+\par
+        <div class="step">\par
+            <h2>Step 3: Review and Confirm</h2>\par
+            <p>Please review your details before submitting.</p>\par
+\par
+            <button type="button" onclick="prevStep()">Back</button>\par
+            <input type="submit" value="Submit">\par
+        </div>\par
+    </form>\par
+</body>\par
+</html>\par
+\par
+ 4. Down counter design (with start, resume, pause, stop button)\par
+\par
+\b PROGRAM:\par
+\b0\par
+<!DOCTYPE html>\par
+<html>\par
+<head>\par
+    <title>Down Counter</title>\par
+    <script>\par
+        let timer;\par
+        let remainingTime;\par
+        let isPaused = false;\par
+\par
+        function startCounter() \{\par
+            const inputTime = parseInt(document.getElementById("timeInput").value);\par
+            if (isNaN(inputTime) || inputTime <= 0) \{\par
+                alert("Please enter a valid number of seconds.");\par
+                return;\par
+            \}\par
+\par
+            remainingTime = inputTime;\par
+            updateDisplay(remainingTime);\par
+\par
+            timer = setInterval(function () \{\par
+                if (!isPaused) \{\par
+                    remainingTime--;\par
+                    updateDisplay(remainingTime);\par
+\par
+                    if (remainingTime <= 0) \{\par
+                        clearInterval(timer);\par
+                        alert("Time's up!");\par
+                    \}\par
+                \}\par
+            \}, 1000);\par
+        \}\par
+\par
+        function updateDisplay(time) \{\par
+            document.getElementById("display").innerText = time + " seconds remaining";\par
+        \}\par
+\par
+        function pauseCounter() \{\par
+            isPaused = true;\par
+        \}\par
+\par
+        function resumeCounter() \{\par
+            isPaused = false;\par
+        \}\par
+\par
+        function stopCounter() \{\par
+            clearInterval(timer);\par
+            document.getElementById("display").innerText = "Counter stopped.";\par
+        \}\par
+    </script>\par
+</head>\par
+<body>\par
+    <h1>Down Counter</h1>\par
+    <input type="number" id="timeInput" placeholder="Enter time in seconds">\par
+    <button onclick="startCounter()">Start</button>\par
+    <button onclick="pauseCounter()">Pause</button>\par
+    <button onclick="resumeCounter()">Resume</button>\par
+    <button onclick="stopCounter()">Stop</button>\par
+    <p id="display"></p>\par
+</body>\par
+</html>\par
+}
+ 
