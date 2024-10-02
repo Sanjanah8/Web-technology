@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            background: url('flower.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: black;
+        }
+        form {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="date"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        input[type="submit"]:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <h2>Register Here</h2>
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        <label>Date of Birth:</label>
+        <input type="date" name="dob" required>
+        <label>Country:</label>
+        <select name="country" required>
+            <option value="">Select Country</option>
+            <option>USA</option>
+            <option>Canada</option>
+            <option>UK</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
