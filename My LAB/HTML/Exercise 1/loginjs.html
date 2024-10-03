@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script>
+        function validateLogin() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+
+            errorMessage.textContent = ""; // Clear previous messages
+
+            if (username === "") {
+                errorMessage.textContent = "Username cannot be empty.";
+                return false;
+            }
+            if (password === "") {
+                errorMessage.textContent = "Password cannot be empty.";
+                return false;
+            }
+
+            alert("Login successful!");
+            return true; // You can perform the actual login logic here
+        }
+    </script>
+</head>
+<body>
+    <h1>Login</h1>
+    <form onsubmit="return validateLogin()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        <br>
+        <button type="submit">Login</button>
+        <p id="error-message" style="color: red;"></p>
+    </form>
+</body>
+</html>

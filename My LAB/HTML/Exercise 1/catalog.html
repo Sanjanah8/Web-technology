@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            text-align: left;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .catalog {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .catalog-item {
+            background-color: white;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 15px;
+            width: calc(48% - 20px); 
+            text-align: center;
+        }
+
+        .catalog-item img {
+            max-width: 100px; 
+            height: auto;
+            border-radius: 5px;
+            display: block; 
+            margin: 0 auto; 
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        p {
+            color: #6c757d;
+        }
+
+        .price {
+            font-size: 1.2em;
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Product Catalog</h1>
+    </header>
+    <main>
+        <div class="catalog">
+            <div class="catalog-item">
+                <img src="pen.jpg" alt="Product 1">
+                <h2>Pen</h2>
+                <p>A group of fancy pens</p>
+                <span class="price">$19.99</span>
+            </div>
+            <div class="catalog-item">
+                <img src="pens.jpg" alt="Product 2">
+                <h2>Ink Pens</h2>
+                <p>A group of ink pens</p>
+                <span class="price">$29.99</span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .timer-container {
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin: 20px 0;
+        }
+
+        .button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button:disabled {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="timer-container">
+    <h1 id="timerDisplay">00:00:00</h1>
+    <input type="number" id="inputMinutes" placeholder="Minutes" min="1" />
+    <input type="number" id="inputSeconds" placeholder="Seconds" min="0" max="59" />
+    <div>
+        <button class="button" id="startButton">Start</button>
+        <button class="button" id="pauseButton" disabled>Pause</button>
+        <button class="button" id="resumeButton" disabled>Resume</button>
+        <button class="button" id="stopButton" disabled>Stop</button>
+    </div>
+</div>
+
+<script>
+    let countdown;
+    let remainingTime;
+    let isPaused = false;
+
+    const timerDisplay = document.getElementById("timerDisplay");
+    const startButton = document.getElementById("startButton");
+    const pauseButton = document.getElementById("pauseButton");
+    const resumeButton = document.getElementById("resumeButton");
+    const stopButton = document.getElementById("stopButton");
+
+    startButton.addEventListener("click", () => {
+        const minutes = parseInt(document.getElementById("inputMinutes").value);
+        const seconds = parseInt(document.getElementById("inputSeconds").value);
+
+        if (!isNaN(minutes) && !isNaN(seconds) && (minutes > 0 || seconds > 0)) {
+            remainingTime = (minutes * 60) + seconds;
+            startCountdown();
+        }
+    });
+
+    pauseButton.addEventListener("click", () => {
+        clearInterval(countdown);
+        isPaused = true;
+        toggleButtons();
+    });
+
+    resumeButton.addEventListener("click", () => {
+        startCountdown();
+    });
+
+    stopButton.addEventListener("click", () => {
+        clearInterval(countdown);
+        timerDisplay.textContent = "00:00:00";
+        document.getElementById("inputMinutes").value = '';
+        document.getElementById("inputSeconds").value = '';
+        isPaused = false;
+        toggleButtons();
+    });
+
+    function startCountdown() {
+        if (isPaused) {
+            isPaused = false;
+        } else {
+            toggleButtons();
+        }
+        
+        countdown = setInterval(() => {
+            if (remainingTime <= 0) {
+                clearInterval(countdown);
+                timerDisplay.textContent = "Time's up!";
+                toggleButtons();
+                return;
+            }
+
+            remainingTime--;
+            updateDisplay();
+        }, 1000);
+    }
+
+    function updateDisplay() {
+        const minutes = Math.floor(remainingTime / 60);
+        const seconds = remainingTime % 60;
+
+        timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    function toggleButtons() {
+        startButton.disabled = !startButton.disabled;
+        pauseButton.disabled = !pauseButton.disabled;
+        resumeButton.disabled = !resumeButton.disabled;
+        stopButton.disabled = !stopButton.disabled;
+    }
+</script>
+
+</body>
+</html>

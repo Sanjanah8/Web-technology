@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration and Resume Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+        }
+
+        .step, .login, .register {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        input, select {
+            width: calc(100% - 12px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button.back {
+            background-color: #6c757d;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+        }
+
+        .link {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            cursor: pointer;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div id="login" class="login active">
+        <h2>Login</h2>
+        <input type="text" id="loginUsername" placeholder="Username" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+        <div class="link" onclick="showRegistration()">Don't have an account? Register</div>
+    </div>
+
+    <div id="register" class="register">
+        <h2>Register</h2>
+        <input type="text" id="regName" placeholder="Name" required>
+        <input type="text" id="regUsername" placeholder="Username" required>
+        <input type="email" id="regEmail" placeholder="Email" required>
+        <input type="password" id="regPassword" placeholder="Password" required>
+        <button onclick="register()">Register</button>
+        <button class="back" onclick="showLogin()">Back</button>
+    </div>
+
+    <form id="resumeUploadForm">
+      
+        <div class="step active" id="step1">
+            <h2>Personal Information</h2>
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="date" id="dob" placeholder="Date of Birth" required>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+
+
+        <div class="step" id="step2">
+            <h2>Account Details</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="button" class="back" onclick="prevStep()">Back</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- Step 3: Upload Resume and Select Country -->
+        <div class="step" id="step3">
+            <h2>Upload Resume</h2>
+            <input type="file" id="resume" accept=".pdf, .doc, .docx" required>
+            <select id="country" required>
+                <option value="">Select Country</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <option value="Australia">Australia</option>
+                <!-- Add more countries as needed -->
+            </select>
+            <button type="button" class="back" onclick="prevStep()">Back</button>
+            <button type="button" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- Step 4: Review and Confirm -->
+        <div class="step" id="step4">
+            <h2>Review and Confirm</h2>
+            <p><strong>Name:</strong> <span id="confirmName"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="confirmDob"></span></p>
+            <p><strong>Username:</strong> <span id="confirmUsername"></span></p>
+            <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+            <p><strong>Country:</strong> <span id="confirmCountry"></span></p>
+            <button type="button" class="back" onclick="prevStep()">Back</button>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll(".step");
+
+    function showStep(step) {
+        steps.forEach((s, index) => {
+            s.classList.toggle("active", index === step);
+        });
+    }
+
+    function nextStep() {
+        if (currentStep === 0) {
+            const name = document.getElementById("name").value;
+            const dob = document.getElementById("dob").value;
+
+            if (name && isValidDate(dob)) {
+                currentStep++;
+                showStep(currentStep);
+            } else {
+                alert("Please enter valid Name and Date of Birth.");
+            }
+        } else if (currentStep === 1) {
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (username && validateEmail(email) && password) {
+                currentStep++;
+                showStep(currentStep);
+            } else {
+                alert("Please fill in all fields with valid data.");
+            }
+        } else if (currentStep === 2) {
+            const resume = document.getElementById("resume").files.length;
+            const country = document.getElementById("country").value;
+
+            if (resume > 0 && country) {
+                document.getElementById("confirmName").textContent = document.getElementById("name").value;
+                document.getElementById("confirmDob").textContent = document.getElementById("dob").value;
+                document.getElementById("confirmUsername").textContent = document.getElementById("username").value;
+                document.getElementById("confirmEmail").textContent = document.getElementById("email").value;
+                document.getElementById("confirmCountry").textContent = country;
+                currentStep++;
+                showStep(currentStep);
+            } else {
+                alert("Please upload a resume and select a country.");
+            }
+        }
+    }
+
+    function prevStep() {
+        currentStep--;
+        showStep(currentStep);
+    }
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    function isValidDate(dateString) {
+        const regex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!dateString.match(regex)) return false;
+        const d = new Date(dateString);
+        return d && (d.getFullYear() === parseInt(dateString.split('-')[0]));
+    }
+
+    document.getElementById("resumeUploadForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Form submitted successfully!");
+    });
+
+    function login() {
+        const username = document.getElementById("loginUsername").value;
+        const password = document.getElementById("loginPassword").value;
+
+        if (username && password) {
+            alert("Login successful!");
+            // Transition to the multi-step form
+            showMultiStepForm();
+        } else {
+            alert("Please enter username and password.");
+        }
+    }
+
+    function register() {
+        const name = document.getElementById("regName").value;
+        const username = document.getElementById("regUsername").value;
+        const email = document.getElementById("regEmail").value;
+        const password = document.getElementById("regPassword").value;
+
+        if (name && username && validateEmail(email) && password) {
+            alert("Registration successful!");
+            showLogin();
+        } else {
+            alert("Please fill in all fields with valid data.");
+        }
+    }
+
+    function showLogin() {
+        document.getElementById("login").classList.add("active");
+        document.getElementById("register").classList.remove("active");
+        document.getElementById("resumeUploadForm").classList.remove("active");
+    }
+
+    function showRegistration() {
+        document.getElementById("login").classList.remove("active");
+        document.getElementById("register").classList.add("active");
+        document.getElementById("resumeUploadForm").classList.remove("active");
+    }
+
+    function showMultiStepForm() {
+        document.getElementById("login").classList.remove("active");
+        document.getElementById("register").classList.remove("active");
+        document.getElementById("resumeUploadForm").classList.add("active");
+        currentStep = 0; 
+        showStep(currentStep);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        main {
+            padding: 20px;
+        }
+        .catalog {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .catalog-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 15px;
+            padding: 15px;
+            width: calc(30% - 30px); /* Three items per row */
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .catalog-item:hover {
+            transform: scale(1.05);
+        }
+
+        .catalog-item img {
+            max-width: 80%; /* Adjust image size */
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin: 0 auto;
+        }
+        h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #333;
+        }
+        p {
+            color: #666;
+            font-size: 1em;
+            margin: 5px 0;
+        }
+        .price {
+            font-size: 1.2em;
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Catalog static webpage</h1>
+    </header>
+    <main>
+        <div class="catalog">
+            <div class="catalog-item">
+                <img src="pen.jpg" alt="Fancy Pen">
+                <h2>Fancy Pen</h2>
+                <p>A beautifully crafted pen for everyday use.</p>
+                <span class="price">$19.99</span>
+            </div>
+            <div class="catalog-item">
+                <img src="pens.jpg" alt="Notebook">
+                <h2>Leather Notebook</h2>
+                <p>A premium leather-bound notebook for your thoughts.</p>
+                <span class="price">$29.99</span>
+            </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
